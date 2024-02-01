@@ -19,4 +19,5 @@
         <maven.compiler.target>20</maven.compiler.target>
         <exec.mainClass>com.mycompany.t5dnoelia.T5dNoelia</exec.mainClass>
     </properties>
+    <name>T5fNoelia</name>
 </project>

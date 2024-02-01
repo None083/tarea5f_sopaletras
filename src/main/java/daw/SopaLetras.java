@@ -53,12 +53,8 @@ public class SopaLetras {
 
         boolean espacioSuficiente = false;
 
-        for (int i = 0; i < this.matriz.length; i++) {
-            for (int j = 0; j < this.matriz[i].length; j++) {
-                if (!(palabra.length() + columna > this.matriz.length)) {
-                    espacioSuficiente = true;
-                }
-            }
+        if (columna + palabra.length() <= this.matriz.length) {
+            espacioSuficiente = true;
         }
         int index = 0;
         if (espacioSuficiente) {
@@ -67,26 +63,20 @@ public class SopaLetras {
                 columna++;
                 index++;
             }
-        }else{
+        } else {
             System.out.println("No hay espacio suficiente");
         }
-
     }
 
     //colocarPalabraHorizontalInvertida,
     //que recibe una coordenada de la matriz y un String con la palabra 
     //y pone la palabra horizontalmente, de forma invertida, en la matriz 
     //a partir de la coordenada indicada, si se puede.
-    
-    public void colocarPalabraHorizontalInvertida(int fila, int columna, String palabra){
+    public void colocarPalabraHorizontalInvertida(int fila, int columna, String palabra) {
         boolean espacioSuficiente = false;
 
-        for (int i = 0; i < this.matriz.length; i++) {
-            for (int j = 0; j < this.matriz[i].length; j++) {
-                if (palabra.length() - columna < 0) {
-                    espacioSuficiente = true;
-                }
-            }
+        if (columna - palabra.length() + 1 >= 0) {
+            espacioSuficiente = true;
         }
         int index = 0;
         if (espacioSuficiente) {
@@ -95,43 +85,55 @@ public class SopaLetras {
                 columna--;
                 index++;
             }
-        }else{
+        } else {
             System.out.println("No hay espacio suficiente");
         }
     }
-    
+
     //colocarPalabraVertical,
     //que recibe una coordenada de la matriz y un String con la palabra 
     //y pone la palabra verticalmente en la matriz a partir 
     //de la coordenada indicada, si se puede.
-    
-    public void colocarPalabraVertical(int fila, int columna, String palabra){
+    public void colocarPalabraVertical(int fila, int columna, String palabra) {
         boolean espacioSuficiente = false;
 
-        for (int i = 0; i < this.matriz.length; i++) {
-            for (int j = 0; j < this.matriz[i].length; j++) {
-                if (palabra.length() - columna < 0) {
-                    espacioSuficiente = true;
-                }
-            }
+        if (fila + palabra.length() <= this.matriz.length) {
+            espacioSuficiente = true;
         }
+
         int index = 0;
         if (espacioSuficiente) {
             for (int i = 0; i < palabra.length(); i++) {
                 this.matriz[fila][columna] = palabra.charAt(index);
-                columna--;
+                fila++;
                 index++;
             }
-        }else{
+        } else {
             System.out.println("No hay espacio suficiente");
         }
     }
-    
-    
-    
-    
+
     //colocarPalabraVerticalInvertida,
     //que recibe una coordenada de la matriz y un String con la palabra 
     //y pone la palabra verticalmente, de forma invertida, 
     //en la matriz a partir de la coordenada indicada, si se puede.
+    public void colocarPalabraVerticalInvertida(int fila, int columna, String palabra) {
+        boolean espacioSuficiente = false;
+
+        if (fila - palabra.length() + 1 >= 0) {
+            espacioSuficiente = true;
+        }
+
+        int index = 0;
+        if (espacioSuficiente) {
+            for (int i = 0; i < palabra.length(); i++) {
+                this.matriz[fila][columna] = palabra.charAt(index);
+                fila--;
+                index++;
+            }
+        } else {
+            System.out.println("No hay espacio suficiente");
+        }
+    }
+    
 }
